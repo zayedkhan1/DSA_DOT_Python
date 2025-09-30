@@ -74,3 +74,18 @@ def prepend(self,value):
         self.head=new_node
     self.length +=1
     return True #optional
+
+#pop first element
+
+def pop_first(self):
+    if self.length==0:
+        return None
+    temp=self.head
+    self.head=self.head.next
+    temp.next=None
+    self.length -=1
+    if self.length==0:
+        self.tail=None
+    return temp.value
+    
+    
