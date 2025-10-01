@@ -105,3 +105,19 @@ def set_value(sefl,index,value):
         temp.value=value 
         return True
     return False
+
+#insert fuction
+
+def insert(self,index,value):
+    if index<0 or index>=self.length:
+        return False
+    if index==0:
+        return self.prepend(value)#need to set return true
+    if index==self.length:
+        return self.append(value) #need to set return true
+    new_node=Node(value)
+    temp=self.get(index-1)
+    new_node.next=temp.next
+    temp.next=new_node
+    self.length+=1
+    return True
