@@ -1,1 +1,2 @@
-my_linked_list.pop_first()
+
+lkdlist=LinkedList(3)

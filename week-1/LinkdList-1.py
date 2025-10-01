@@ -88,4 +88,20 @@ def pop_first(self):
         self.tail=None
     return temp.value
     
-    
+#Get function
+
+def get(self,index):
+    if index<0 or index>=self.length:
+        return None
+    temp=self.head
+    for _ in range(index):
+        temp=temp.next
+    return temp.value
+
+#Set_value function
+def set_value(sefl,index,value):
+    temp=sefl.get(index)#using get methos inside set method
+    if temp is not None:
+        temp.value=value 
+        return True
+    return False
