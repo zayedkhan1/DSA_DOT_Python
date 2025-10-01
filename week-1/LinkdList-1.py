@@ -45,7 +45,7 @@ def append(self,value):
 
 #pop method creating
 #if head and tail is none(empty)
-def pop_method(self):
+def pop(self):
     if self.length==0:
         return None
 #if head and tail is not empty
@@ -121,3 +121,20 @@ def insert(self,index,value):
     temp.next=new_node
     self.length+=1
     return True
+
+#remove function
+
+def remove(self,index):
+    if index<0 or index>=self.length:
+        return None
+    if index==0:
+        return self.pop_first()
+    if index==self.length-1:
+        return self.pop()
+    prev=self.get(index-1)
+    temp=prev.next
+    prev.next=temp.next
+    temp.next=None
+    self.length-=1
+    return temp.value
+    
