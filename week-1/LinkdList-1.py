@@ -66,7 +66,7 @@ def pop(self):
 #prepend method
 def prepend(self,value):
     new_node=Node(value)
-    if self.length==0:
+    if self.length==0:  # if self.head is not None:# same 
         self.head=new_node
         self.tail=new_node
     else:
@@ -150,4 +150,16 @@ def reverse(self):
         temp.next=before
         before=temp
         temp=after
+
+#Search method
+
+def search(self,target):
+    temp=self.head
+    index=0
+    while temp is not None:
+        if temp.value==target:
+            return f"fount{target} at positon {index}"
+        temp=temp.next
+        index+=1
+    return "target is not found"
         

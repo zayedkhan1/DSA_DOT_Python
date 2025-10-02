@@ -1,2 +1,1 @@
-
-lkdlist=LinkedList(3)
+print(lkdList.search(15))
