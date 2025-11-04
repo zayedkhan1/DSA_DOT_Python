@@ -33,7 +33,54 @@ def pop(self):
         self.tail=None
         temp.prev=None
     self.length-=1
-    return temp.value
+    return temp.value #returning temp.value fro seeing this value
 
+#prepend method
+def prepend(self,value):
+    new_node=Node(value)
+    if self.length==0:
+        self.head=new_node
+        self.tail=new_node
+    else:
+        new_node.next=self.head
+        self.head.prev=new_node
+        self.head=new_node
+    self.length+=1
+    return True
 
-    
+#pop first method
+def pop_first(self):
+    if self.length==0:
+        return None
+    temp=self.head
+    if self.length==1:
+        self.head=None
+        self.tail=None
+    else:
+        self.head=self.head.next
+        self.head.prev=None
+        temp.next=None
+    self.length-=1
+    return temp.value #returning temp.value for seeing this value
+
+#get method
+def get(self,index):
+     if index<0 or index>=self.length:
+         return None
+     temp=self.head
+     if index<self.length//2: #first half e pawar jonno
+         for _ in range(index):
+             temp=temp.next
+     else:
+         temp=self.tail
+         for _ in range(self.length-1,index,-1):
+             temp=temp.prev
+     return temp.value
+        
+# set method
+def set_value(self,index,value):
+    temp=self.get(index)
+    if temp is not None:
+        temp.value=value
+        return True
+    return False
