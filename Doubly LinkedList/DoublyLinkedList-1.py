@@ -88,6 +88,20 @@ class DLinkedList:
             return True
         return False
     
+    def insert(self,index,value):
+        if index<0 or index>self.length:
+            return False
+        if index==0:
+            return self.prepend(value)
+        if index==self.length:
+            return self.append(value)
+        new_node=Node(value)
+        temp=self.get(index-1)
+        new_node.next=temp.next
+        temp.next=new_node
+        self.length+=1
+        return True
+    
         
 dblkdlist=DLinkedList(5)
 dblkdlist.append(21)
@@ -112,5 +126,8 @@ print("value at index 2 is:",dblkdlist.get(2))
 print("value at index 4 is:",dblkdlist.get(4))  
 
 dblkdlist.set_value(2,88)
+
+dblkdlist.insert(1,77)
+print("after inserting 77 at index 1 the linked list is:")
 # print("set value at index 1 is:",dblkdlist.set_value(1,88))
 dblkdlist.printVal()
