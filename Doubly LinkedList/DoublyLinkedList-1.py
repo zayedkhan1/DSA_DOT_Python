@@ -1,3 +1,6 @@
+from operator import index
+
+
 class Node:
     def __init__(self,value):
         self.value=value
@@ -96,11 +99,31 @@ class DLinkedList:
         if index==self.length:
             return self.append(value)
         new_node=Node(value)
-        temp=self.get(index-1)
-        new_node.next=temp.next
-        temp.next=new_node
+        before=self.get(index-1)
+        after=before.next
+        before.next=new_node
+        new_node.prev=before
+        new_node.next=after
+        before.next=new_node
+        after.prev=new_node
+ 
         self.length+=1
         return True
+    
+    def remove(self,index):
+        if index<0 or index>=self.length:
+            return None
+        if index==0:
+            return self.pop_first()
+        if index==self.length-1:
+            return self.pop()
+        temp=self.get(index)
+        temp.prev.next=temp.next
+        temp.next.prev=temp.prev
+        temp.next=None
+        temp.prev=None
+        self.length-=1
+        return temp.value
     
         
 dblkdlist=DLinkedList(5)
@@ -130,4 +153,8 @@ dblkdlist.set_value(2,88)
 dblkdlist.insert(1,77)
 print("after inserting 77 at index 1 the linked list is:")
 # print("set value at index 1 is:",dblkdlist.set_value(1,88))
+dblkdlist.printVal()
+
+dblkdlist.remove(2)
+print("\nafter removing value at index 2 the linked list is:")
 dblkdlist.printVal()
